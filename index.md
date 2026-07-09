@@ -9,7 +9,7 @@ You should comment out all portions of your portfolio that you have not complete
 test 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
-| Austin L | Lynbrook | Mechanical Engineering | Incoming Freshman |
+| Austin L | Lynbrook High School | Mechanical Engineering | Incoming Freshman |
 
 **Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
 
@@ -56,15 +56,57 @@ Here's where you'll put images of your schematics. [Tinkercad](https://www.tinke
 Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. 
 
 ```c++
+#include <Servo.h>
+
+Servo motor;
+Servo motor1;
+Servo motor2;
+
 void setup() {
-  // put your setup code here, to run once:
-  Serial.begin(9600);
-  Serial.println("Hello World!");
+  motor.attach(8);
+  motor.write(90);
+  motor1.attach(7);
+  motor1.write(45);
+  motor2.attach(6);
+  motor2.write(45);
+  delay(1000);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  front();
+  delay(500);
+  open();
+  delay(500);
+  back();
+  delay(500);
+  close();
+  delay(500);
+}
 
+void close() {
+  delay(500);
+  motor.write(0);
+  delay(500);
+}
+
+void open() {
+  delay(500);
+  motor.write(90);
+  delay(500);
+}
+
+void front() {
+  delay(500);
+  motor2.write(0);
+  motor1.write(90);
+  delay(500);
+}
+
+void back() {
+  delay(500);
+  motor2.write(90);
+  motor1.write(0);
+  delay(500);
 }
 ```
 
